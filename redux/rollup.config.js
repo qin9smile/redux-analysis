@@ -22,11 +22,14 @@ const makeExternalPredicate = (externalArr) => {
   return (id) => pattern.test(id)
 }
 
+const sourcemap = {
+  sourcemap: true
+}
 export default [
   // CommonJS
   {
     input: 'src/index.ts',
-    output: { file: 'lib/redux.js', format: 'cjs', indent: false },
+    output: { file: 'lib/redux.js', format: 'cjs', indent: false, ...sourcemap },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
@@ -49,7 +52,7 @@ export default [
   // ES
   {
     input: 'src/index.ts',
-    output: { file: 'es/redux.js', format: 'es', indent: false },
+    output: { file: 'es/redux.js', format: 'es', indent: false, ...sourcemap },
     external: makeExternalPredicate([
       ...Object.keys(pkg.dependencies || {}),
       ...Object.keys(pkg.peerDependencies || {}),
@@ -75,7 +78,7 @@ export default [
   // ES for Browsers
   {
     input: 'src/index.ts',
-    output: { file: 'es/redux.mjs', format: 'es', indent: false },
+    output: { file: 'es/redux.mjs', format: 'es', indent: false, ...sourcemap },
     plugins: [
       nodeResolve({
         extensions,
@@ -107,6 +110,7 @@ export default [
       format: 'umd',
       name: 'Redux',
       indent: false,
+      ...sourcemap,
     },
     plugins: [
       nodeResolve({
@@ -131,6 +135,7 @@ export default [
       format: 'umd',
       name: 'Redux',
       indent: false,
+      ...sourcemap,
     },
     plugins: [
       nodeResolve({

@@ -1,0 +1,29 @@
+/*
+ * File: launch.json
+ * File Created: 2020-06-15
+ * Author: 王超
+ * -----
+ * Last Modified: 2020-06-15
+ * Modified By: 王超
+ * -----
+ * HISTORY:
+ * Date      	By	Comments
+ * ----------	---	---------------------------------------------------------
+ */
+
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "启动程序",
+            "port": 4000,
+            "file": "${workspaceFolder}/examples/getState.dispatch/index.html"
+        }
+    ]
+}
